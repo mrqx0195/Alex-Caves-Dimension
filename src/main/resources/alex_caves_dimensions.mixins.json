@@ -7,9 +7,12 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "mixins": [
+    "AccessorSpawnState",
     "MixinDrowned",
     "MixinGlowSquid",
-    "MixinMob"
+    "MixinMob",
+    "MixinNaturalSpawner",
+    "MixinSpawnState"
   ],
   "package": "net.mrqx.alexcavedimensions.mixin",
   "refmap": "alex_caves_dimensions.refmap.json",
