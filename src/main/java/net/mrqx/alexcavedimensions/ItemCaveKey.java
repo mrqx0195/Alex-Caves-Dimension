@@ -1,5 +1,6 @@
 package net.mrqx.alexcavedimensions;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -13,11 +14,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -91,9 +92,16 @@ public class ItemCaveKey extends Item {
     private static @NotNull ITeleporter getTeleporter() {
         return new ITeleporter() {
             @Override
-            public @NotNull PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-                return new PortalInfo(new Vec3(entity.getX(), destWorld.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) entity.getX(), (int) entity.getZ()), entity.getZ()),
-                        Vec3.ZERO, entity.getYRot(), entity.getXRot());
+            public @Nullable PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
+
+                for (int i = destWorld.getHeight() + destWorld.getMinBuildHeight(); i > destWorld.getMinBuildHeight(); i--) {
+                    BlockPos pos = new BlockPos((int) entity.getX(), i, (int) entity.getZ());
+                    if (destWorld.getBlockState(pos).isValidSpawn(destWorld, pos, entity.getType())) {
+                        return new PortalInfo(entity.position().add(0, i + 1 - entity.position().y, 0),
+                                Vec3.ZERO, entity.getYRot(), entity.getXRot());
+                    }
+                }
+                return ITeleporter.super.getPortalInfo(entity, destWorld, defaultPortalInfo);
             }
         };
     }
