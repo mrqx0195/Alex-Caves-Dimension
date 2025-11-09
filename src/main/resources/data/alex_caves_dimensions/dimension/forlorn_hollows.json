@@ -1,0 +1,11 @@
+{
+  "type": "alex_caves_dimensions:forlorn_hollows",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "alexscaves:forlorn_hollows"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "alex_caves_dimensions:toxic_caves",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "alex_caves_dimensions:toxic_caves",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "alexscaves:toxic_caves"
+    }
+  }
+}

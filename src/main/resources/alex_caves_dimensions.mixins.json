@@ -1,0 +1,17 @@
+{
+  "client": [
+    "MixinFogRenderer",
+    "MixinGameRenderer",
+    "MixinLightTexture"
+  ],
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "MixinDrowned",
+    "MixinGlowSquid",
+    "MixinMob"
+  ],
+  "package": "net.mrqx.alexcavedimensions.mixin",
+  "refmap": "alex_caves_dimensions.refmap.json",
+  "required": true
+}

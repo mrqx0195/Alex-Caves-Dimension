@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "alex_caves_dimensions:item/toxic_caves_key"
+  }
+}

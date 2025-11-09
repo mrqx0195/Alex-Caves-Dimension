@@ -1,0 +1,11 @@
+{
+  "type": "alex_caves_dimensions:candy_cavity",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "alex_caves_dimensions:candy_cavity",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "alexscaves:candy_cavity"
+    }
+  }
+}

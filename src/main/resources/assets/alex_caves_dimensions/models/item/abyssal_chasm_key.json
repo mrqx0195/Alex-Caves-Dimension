@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "alex_caves_dimensions:item/abyssal_chasm_key"
+  }
+}
