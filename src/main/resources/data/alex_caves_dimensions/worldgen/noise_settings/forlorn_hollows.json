@@ -1,10 +1,10 @@
 {
   "aquifers_enabled": true,
   "default_block": {
-    "Name": "alexscaves:block_of_chocolate"
+    "Name": "alexscaves:coprolith"
   },
   "default_fluid": {
-    "Name": "alexscaves:purple_soda",
+    "Name": "minecraft:water",
     "Properties": {
       "level": "0"
     }
@@ -18,7 +18,7 @@
     "size_vertical": 2
   },
   "ore_veins_enabled": true,
-  "sea_level": 63,
+  "sea_level": 47,
   "spawn_target": [
     {
       "continentalness": [
@@ -444,14 +444,14 @@
                       "then_run": {
                         "type": "minecraft:block",
                         "result_state": {
-                          "Name": "alexscaves:block_of_frosted_chocolate"
+                          "Name": "alexscaves:guanostone"
                         }
                       }
                     },
                     {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "alexscaves:cake_layer"
+                        "Name": "alexscaves:porous_coprolith"
                       }
                     }
                   ]
@@ -478,7 +478,7 @@
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
-                    "Name": "alexscaves:cake_layer"
+                    "Name": "alexscaves:porous_coprolith"
                   }
                 }
               }
@@ -507,17 +507,14 @@
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "alexscaves:block_of_chocolate"
+                        "Name": "alexscaves:coprolith"
                       }
                     }
                   },
                   {
                     "type": "minecraft:block",
                     "result_state": {
-                      "Name": "alexscaves:frostmint",
-                      "Properties": {
-                        "type": "double"
-                      }
+                      "Name": "alexscaves:guano_block"
                     }
                   }
                 ]

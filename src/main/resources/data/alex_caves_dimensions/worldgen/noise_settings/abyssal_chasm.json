@@ -1,10 +1,10 @@
 {
   "aquifers_enabled": true,
   "default_block": {
-    "Name": "alexscaves:block_of_chocolate"
+    "Name": "alexscaves:abyssmarine"
   },
   "default_fluid": {
-    "Name": "alexscaves:purple_soda",
+    "Name": "minecraft:water",
     "Properties": {
       "level": "0"
     }
@@ -17,65 +17,8 @@
     "size_horizontal": 1,
     "size_vertical": 2
   },
-  "ore_veins_enabled": true,
-  "sea_level": 63,
-  "spawn_target": [
-    {
-      "continentalness": [
-        -0.11,
-        1.0
-      ],
-      "depth": 0.0,
-      "erosion": [
-        -1.0,
-        1.0
-      ],
-      "humidity": [
-        -1.0,
-        1.0
-      ],
-      "offset": 0.0,
-      "temperature": [
-        -1.0,
-        1.0
-      ],
-      "weirdness": [
-        -1.0,
-        -0.16
-      ]
-    },
-    {
-      "continentalness": [
-        -0.11,
-        1.0
-      ],
-      "depth": 0.0,
-      "erosion": [
-        -1.0,
-        1.0
-      ],
-      "humidity": [
-        -1.0,
-        1.0
-      ],
-      "offset": 0.0,
-      "temperature": [
-        -1.0,
-        1.0
-      ],
-      "weirdness": [
-        0.16,
-        1.0
-      ]
-    }
-  ],
   "noise_router": {
-    "barrier": {
-      "type": "minecraft:noise",
-      "noise": "minecraft:aquifer_barrier",
-      "xz_scale": 1.0,
-      "y_scale": 0.5
-    },
+    "barrier": 0.0,
     "continents": "minecraft:overworld/continents",
     "depth": "minecraft:overworld/depth",
     "erosion": "minecraft:overworld/erosion",
@@ -222,74 +165,15 @@
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_fluid_level_floodedness",
       "xz_scale": 1.0,
-      "y_scale": 0.67
+      "y_scale": 0.8
     },
     "fluid_level_spread": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_fluid_level_spread",
       "xz_scale": 1.0,
-      "y_scale": 0.7142857142857143
+      "y_scale": 0.8
     },
-    "initial_density_without_jaggedness": {
-      "type": "minecraft:add",
-      "argument1": 0.1171875,
-      "argument2": {
-        "type": "minecraft:mul",
-        "argument1": {
-          "type": "minecraft:y_clamped_gradient",
-          "from_value": 0.0,
-          "from_y": -64,
-          "to_value": 1.0,
-          "to_y": -40
-        },
-        "argument2": {
-          "type": "minecraft:add",
-          "argument1": -0.1171875,
-          "argument2": {
-            "type": "minecraft:add",
-            "argument1": -0.078125,
-            "argument2": {
-              "type": "minecraft:mul",
-              "argument1": {
-                "type": "minecraft:y_clamped_gradient",
-                "from_value": 1.0,
-                "from_y": 240,
-                "to_value": 0.0,
-                "to_y": 256
-              },
-              "argument2": {
-                "type": "minecraft:add",
-                "argument1": 0.078125,
-                "argument2": {
-                  "type": "minecraft:clamp",
-                  "input": {
-                    "type": "minecraft:add",
-                    "argument1": -0.703125,
-                    "argument2": {
-                      "type": "minecraft:mul",
-                      "argument1": 4.0,
-                      "argument2": {
-                        "type": "minecraft:quarter_negative",
-                        "argument": {
-                          "type": "minecraft:mul",
-                          "argument1": "minecraft:overworld/depth",
-                          "argument2": {
-                            "type": "minecraft:cache_2d",
-                            "argument": "minecraft:overworld/factor"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "max": 64.0,
-                  "min": -64.0
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+    "initial_density_without_jaggedness": 0.0,
     "lava": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_lava",
@@ -383,6 +267,58 @@
       }
     }
   },
+  "ore_veins_enabled": true,
+  "sea_level": 127,
+  "spawn_target": [
+    {
+      "continentalness": [
+        -0.11,
+        1.0
+      ],
+      "depth": 0.0,
+      "erosion": [
+        -1.0,
+        1.0
+      ],
+      "humidity": [
+        -1.0,
+        1.0
+      ],
+      "offset": 0.0,
+      "temperature": [
+        -1.0,
+        1.0
+      ],
+      "weirdness": [
+        -1.0,
+        -0.16
+      ]
+    },
+    {
+      "continentalness": [
+        -0.11,
+        1.0
+      ],
+      "depth": 0.0,
+      "erosion": [
+        -1.0,
+        1.0
+      ],
+      "humidity": [
+        -1.0,
+        1.0
+      ],
+      "offset": 0.0,
+      "temperature": [
+        -1.0,
+        1.0
+      ],
+      "weirdness": [
+        0.16,
+        1.0
+      ]
+    }
+  ],
   "surface_rule": {
     "type": "minecraft:sequence",
     "sequence": [
@@ -416,71 +352,36 @@
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:stone_depth",
-                "add_surface_depth": false,
-                "offset": 0,
-                "secondary_depth_range": 0,
-                "surface_type": "floor"
-              },
-              "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:water",
-                  "add_stone_depth": false,
-                  "offset": -1,
-                  "surface_depth_multiplier": 0
-                },
-                "then_run": {
-                  "type": "minecraft:sequence",
-                  "sequence": [
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:water",
-                        "add_stone_depth": false,
-                        "offset": 0,
-                        "surface_depth_multiplier": 0
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "alexscaves:block_of_frosted_chocolate"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "alexscaves:cake_layer"
-                      }
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
                 "type": "minecraft:water",
                 "add_stone_depth": true,
                 "offset": -6,
                 "surface_depth_multiplier": -1
               },
               "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:stone_depth",
-                  "add_surface_depth": true,
-                  "offset": 0,
-                  "secondary_depth_range": 0,
-                  "surface_type": "floor"
-                },
-                "then_run": {
-                  "type": "minecraft:block",
-                  "result_state": {
-                    "Name": "alexscaves:cake_layer"
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:stone_depth",
+                      "add_surface_depth": true,
+                      "offset": 0,
+                      "secondary_depth_range": 0,
+                      "surface_type": "floor"
+                    },
+                    "then_run": {
+                      "type": "minecraft:sequence",
+                      "sequence": [
+                        {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "minecraft:dirt"
+                          }
+                        }
+                      ]
+                    }
                   }
-                }
+                ]
               }
             },
             {
@@ -496,29 +397,31 @@
                 "type": "minecraft:sequence",
                 "sequence": [
                   {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:stone_depth",
-                      "add_surface_depth": false,
-                      "offset": 0,
-                      "secondary_depth_range": 0,
-                      "surface_type": "ceiling"
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "alexscaves:block_of_chocolate"
+                    "type": "minecraft:sequence",
+                    "sequence": [
+                      {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:stone_depth",
+                          "add_surface_depth": false,
+                          "offset": 0,
+                          "secondary_depth_range": 0,
+                          "surface_type": "ceiling"
+                        },
+                        "then_run": {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "alexscaves:abyssmarine"
+                          }
+                        }
+                      },
+                      {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "alexscaves:muck"
+                        }
                       }
-                    }
-                  },
-                  {
-                    "type": "minecraft:block",
-                    "result_state": {
-                      "Name": "alexscaves:frostmint",
-                      "Properties": {
-                        "type": "double"
-                      }
-                    }
+                    ]
                   }
                 ]
               }

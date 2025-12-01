@@ -26,7 +26,7 @@ public abstract class MixinSpawnState {
     private void injectCanSpawnForCategory(MobCategory category, ChunkPos pos, CallbackInfoReturnable<Boolean> cir) {
         if (category.equals(ACEntityRegistry.CAVE_CREATURE)) {
             int i = (int) (category.getMaxInstancesPerChunk() * this.spawnableChunkCount / Math.pow(17.0D, 2.0D)
-                    * AlexsCaves.COMMON_CONFIG.caveCreatureSpawnCountModifier.get() * 14);
+                    * AlexsCaves.COMMON_CONFIG.caveCreatureSpawnCountModifier.get() * 7);
             if (this.mobCategoryCounts.getInt(category) >= i) {
                 cir.setReturnValue(false);
             } else {

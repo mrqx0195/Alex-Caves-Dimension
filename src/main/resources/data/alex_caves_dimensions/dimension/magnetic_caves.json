@@ -2,7 +2,7 @@
   "type": "alex_caves_dimensions:magnetic_caves",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "minecraft:overworld",
+    "settings": "alex_caves_dimensions:magnetic_caves",
     "biome_source": {
       "type": "minecraft:fixed",
       "biome": "alexscaves:magnetic_caves"

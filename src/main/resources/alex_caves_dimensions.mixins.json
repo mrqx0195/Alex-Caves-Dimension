@@ -8,10 +8,12 @@
   "minVersion": "0.8",
   "mixins": [
     "AccessorSpawnState",
+    "MixinCaveTabletLootModifier",
     "MixinDrowned",
     "MixinGlowSquid",
     "MixinMob",
     "MixinNaturalSpawner",
+    "MixinOceanTrenchStructurePiece",
     "MixinSpawnState"
   ],
   "package": "net.mrqx.alexcavedimensions.mixin",
