@@ -510,15 +510,6 @@
                         "Name": "alexscaves:block_of_chocolate"
                       }
                     }
-                  },
-                  {
-                    "type": "minecraft:block",
-                    "result_state": {
-                      "Name": "alexscaves:frostmint",
-                      "Properties": {
-                        "type": "double"
-                      }
-                    }
                   }
                 ]
               }
