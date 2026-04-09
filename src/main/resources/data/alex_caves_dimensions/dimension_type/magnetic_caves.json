@@ -11,7 +11,6 @@
   "logical_height": 384,
   "min_y": -64,
   "monster_spawn_block_light_limit": 15,
-  "fixed_time": 6000,
   "monster_spawn_light_level": 7,
   "natural": true,
   "piglin_safe": false,

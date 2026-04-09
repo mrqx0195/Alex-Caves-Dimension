@@ -3,9 +3,12 @@ package net.mrqx.alexcavedimensions;
 import com.github.alexmodguy.alexscaves.server.misc.ACCreativeTabRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,22 +26,35 @@ public class AlexCavesDimensions {
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, MODID);
-
+    
     public static final RegistryObject<Item> ABYSSAL_CHASM_KEY = ITEMS.register("abyssal_chasm_key", () -> new ItemCaveKey(new Item.Properties()));
     public static final RegistryObject<Item> CANDY_CAVITY_KEY = ITEMS.register("candy_cavity_key", () -> new ItemCaveKey(new Item.Properties()));
     public static final RegistryObject<Item> FORLORN_HOLLOWS_KEY = ITEMS.register("forlorn_hollows_key", () -> new ItemCaveKey(new Item.Properties()));
     public static final RegistryObject<Item> TOXIC_CAVES_KEY = ITEMS.register("toxic_caves_key", () -> new ItemCaveKey(new Item.Properties()));
     public static final RegistryObject<Item> PRIMORDIAL_CAVES_KEY = ITEMS.register("primordial_caves_key", () -> new ItemCaveKey(new Item.Properties()));
     public static final RegistryObject<Item> MAGNETIC_CAVES_KEY = ITEMS.register("magnetic_caves_key", () -> new ItemCaveKey(new Item.Properties()));
-
+    
     public static final RegistryObject<RecipeSerializer<?>> CAVE_KEY = RECIPE_SERIALIZERS.register("cave_key", () -> new SimpleCraftingRecipeSerializer<>(RecipeCaveKey::new));
-
+    
+    public static final ResourceKey<Level> TOXIC_CAVES_RESOURCE_KEY = ResourceKey.create(Registries.DIMENSION,
+        new ResourceLocation(MODID, "toxic_caves"));
+    public static final ResourceKey<Level> PRIMORDIAL_CAVES_RESOURCE_KEY = ResourceKey.create(Registries.DIMENSION,
+        new ResourceLocation(MODID, "primordial_caves"));
+    public static final ResourceKey<Level> MAGNETIC_CAVES_RESOURCE_KEY = ResourceKey.create(Registries.DIMENSION,
+        new ResourceLocation(MODID, "magnetic_caves"));
+    public static final ResourceKey<Level> FORLORN_HOLLOWS_RESOURCE_KEY = ResourceKey.create(Registries.DIMENSION,
+        new ResourceLocation(MODID, "forlorn_hollows"));
+    public static final ResourceKey<Level> CANDY_CAVITY_RESOURCE_KEY = ResourceKey.create(Registries.DIMENSION,
+        new ResourceLocation(MODID, "candy_cavity"));
+    public static final ResourceKey<Level> ABYSSAL_CHASM_RESOURCE_KEY = ResourceKey.create(Registries.DIMENSION,
+        new ResourceLocation(MODID, "abyssal_chasm"));
+    
     public AlexCavesDimensions() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(modEventBus);
         RECIPE_SERIALIZERS.register(modEventBus);
     }
-
+    
     @SubscribeEvent
     public static void onBuildCreativeModeTabContentsEvent(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().equals(ACCreativeTabRegistry.ABYSSAL_CHASM.getKey())) {
@@ -59,5 +75,10 @@ public class AlexCavesDimensions {
         if (event.getTabKey().equals(ACCreativeTabRegistry.MAGNETIC_CAVES.getKey())) {
             event.accept(MAGNETIC_CAVES_KEY.get());
         }
+    }
+    
+    public static boolean shouldDimensionHasNightVision(ResourceKey<Level> dimension) {
+        return dimension.location().getNamespace().equals(AlexCavesDimensions.MODID)
+            && (dimension.equals(CANDY_CAVITY_RESOURCE_KEY) || dimension.equals(PRIMORDIAL_CAVES_RESOURCE_KEY));
     }
 }

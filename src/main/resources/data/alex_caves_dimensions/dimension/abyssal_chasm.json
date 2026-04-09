@@ -4,8 +4,39 @@
     "type": "minecraft:noise",
     "settings": "alex_caves_dimensions:abyssal_chasm",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "alexscaves:abyssal_chasm"
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "minecraft:deep_cold_ocean",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "offset": 0,
+            "depth": [
+              -2,
+              0
+            ]
+          }
+        },
+        {
+          "biome": "alexscaves:abyssal_chasm",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "offset": 0,
+            "depth": [
+              0,
+              2
+            ]
+          }
+        }
+      ]
     }
   }
 }
